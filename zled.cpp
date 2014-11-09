@@ -34,7 +34,7 @@ void ZLed::Dimension()
   bezelPath.moveTo(center);
   bezelPath.arcTo(bezelRect, 0, 360);
 
-  // Bezel shading
+  // Bezel shading, light from top right
   bezelGradient = QLinearGradient(bezelRect.topRight(), bezelRect.bottomLeft());
   bezelGradient.setColorAt(0.0, QColor(Qt::darkGray));
   bezelGradient.setColorAt(1.0, QColor(Qt::black));
@@ -49,16 +49,17 @@ void ZLed::Dimension()
   ledPath.moveTo(center);
   ledPath.arcTo(ledRect, 0, 360);
 
-  // LED "Bright spot"
+  // LED "Bright spot" a little up and a little right of center
   focalPoint = QPoint(center.x() + (bezelDiameter / 8), center.y() - (bezelDiameter / 8));
 }
 
 void ZLed::Render(QPainter &painter)
 {
   // Set LED color intensities
-  if (!ledLit) {
+  if (!ledLit) {  // Reduce brightness to %20 of original if not lit
     ledColor.setHsv(ledColor.hue(), ledColor.saturation(), ledColor.value()*0.2);
   }
+  // Calculate a darker color for the LED gradient
   ledColorLow.setHsv(ledColor.hue(), ledColor.saturation(), ledColor.value()*0.4);
 
   // Set LED gradients

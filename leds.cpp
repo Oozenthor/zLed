@@ -24,6 +24,7 @@ void LEDs::paintEvent(QPaintEvent *event)
 
   QPainter painter(this);
 /*
+// Single LED calls using standard QColors
   ZLed redLed(QPoint(50, 50), Qt::red, toggle );
   redLed.Render(painter);
   ZLed greenLed(QPoint(150, 50), Qt::green, toggle );
@@ -48,13 +49,13 @@ void LEDs::paintEvent(QPaintEvent *event)
 
   for(y=0; y<3; y++) {
     for(x=0; x<3; x++) {
-      col = 6 + qrand() % 7;
+      col = 6 + qrand() % 7; // Pick some bright colors from Qt::GlobalColor
       if (col == 6) {
-        col = 3; //white
+        col = 3; // white instead of lightGray
       }
-      ZLed Led(QPoint(50+x*80, 50+y*80), (Qt::GlobalColor)(col), qrand() % 2, 70);
-//      ZLed Led(QPoint(50+x*85, 50+y*85), QColor((127 + qrand() % 128), (127 + qrand() % 128), (127 + qrand() % 128)), qrand() % 2);
-      Led.Render(painter);
+      ZLed led(QPoint(50+x*80, 50+y*80), (Qt::GlobalColor)(col), qrand() % 2, 70); // Standard QColors
+//      ZLed led(QPoint(50+x*85, 50+y*85), QColor((127 + qrand() % 128), (127 + qrand() % 128), (127 + qrand() % 128)), qrand() % 2); // Random colors
+      led.Render(painter);
     }
   }
 }
