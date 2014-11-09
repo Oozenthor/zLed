@@ -1,7 +1,7 @@
 #ifndef ZLED_H
 #define ZLED_H
+// Display some nice panel LEDs with a bezel using QPainter
 
-//#include <QGraphicsItem>
 #include <QPainter>
 #include <QPainterPath>
 
