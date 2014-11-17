@@ -20,3 +20,6 @@ HEADERS  += leds.h \
     zled.h
 
 FORMS    += leds.ui
+
+OTHER_FILES += \
+    LICENSE
