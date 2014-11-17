@@ -20,11 +20,11 @@ public:
   ~LEDs();
 
 protected:
-    void paintEvent(QPaintEvent *event);
+  void paintEvent(QPaintEvent *event);
 
 private slots:
-    void on_toggleButton_clicked();
-    void cycleLeds();
+  void on_toggleButton_clicked();
+  void cycleLeds();
 
 private:
   Ui::LEDs *ui;
